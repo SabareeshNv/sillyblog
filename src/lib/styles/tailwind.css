@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .wrapper {
+    @apply max-w-[1300px] w-[90%] md:w-[95%] mx-auto;
+  }
+
+  .heading::after {
+    content: "";
+    display: block;
+    margin-top: 5px;
+    width: clamp(2em, 25%, 3em);
+    height: 3px;
+    background-color: #212121;
+  }
+
+  .gridwithsidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .gridwithsidebar {
+      gap: 2rem;
+      grid-template-columns: 2.5fr 1fr;
+    }
+  }
+}
+
+/* Push Footer down at the bottom */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body > footer {
+  position: sticky;
+  top: 100vh;
+}

@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../lib/layouts/BaseLayout.astro";
+import Card from "../lib/components/Card.astro";
+
+import { getCollection } from "astro:content";
+import { filterPosts } from "../lib/utils/helpers";
+
+const allPosts = await getCollection("blog");
+const filteredPosts = filterPosts(allPosts);
+// console.log(Object.values(allPosts)[0]);
+
+const title = "TheLoneVoice";
+const description = "Welcome to my humble blog";
+---
+
+<BaseLayout title="Homepage" description="Description">
+  <main class="wrapper py-6">
+    <div class="card-grid">
+      {filteredPosts.map((post) => <Card {post} />)}
+    </div>
+    <aside class="sidebar">Sidebar</aside>
+  </main>
+</BaseLayout>
+
+<style>
+  .card-grid {
+    display: grid;
+    column-gap: 1em;
+    row-gap: 3em;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 600px) {
+    .card-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

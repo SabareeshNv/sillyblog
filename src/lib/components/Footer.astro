@@ -1,0 +1,28 @@
+---
+const footer = [
+  { text: "Privacy Policy", link: "/privacy-policy" },
+  { text: "RSS Feed", link: "/rss.xml" },
+  { text: "Editorial Policy", link: "/editorial-policy" },
+];
+---
+
+<footer class="bg-[#000000e6] py-6">
+  <div class="wrapper grid gap-4 md:grid-cols-3">
+    <ul
+      class="flex flex-wrap gap-4 justify-evenly md:justify-normal md:col-span-2"
+    >
+      {
+        footer.map((item) => (
+          <li>
+            <a href={item.link} class="text-gray-200">
+              {item.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="text-center md:text-right text-gray-200">
+      Copyright © 2024 | TheLoneVoice.in
+    </div>
+  </div>
+</footer>

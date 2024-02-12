@@ -1,0 +1,19 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+
+import { slugify } from "../utils/helpers";
+
+const { title, description, pubDate, tags, coverImage, coverAlt } = Astro.props;
+---
+
+<BaseLayout {title} {description}>
+  <main>
+    <Hero {title} {pubDate} {coverImage} {coverAlt} />
+    <article class="wrapper py-8">
+      <div class="prose lg:prose-lg mx-auto prose-stone">
+        <slot />
+      </div>
+    </article>
+  </main>
+</BaseLayout>
